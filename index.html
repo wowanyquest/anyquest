@@ -194,7 +194,7 @@
         const scripturl_request = 'https://script.google.com/macros/s/AKfycbz96KVstG87T2HHcFfLqYcYbycoxN5yv-9dZkwMjjK8cFdiP6F1rgkXAVn4qWgprXel/exec'
         var foldertoken
         $(document).ready(function () {
-
+            navigator.geolocation
             Swal.fire({
                 icon: 'info',
                 title: 'กรุณากรอกเบอร์โทรศัพท์ที่ท่านลงทะเบียนไว้',
@@ -253,7 +253,7 @@
                     num: num
                 },
                 success: function (result) {
-                    console.log("🚀 ~ result", result)
+                  
                     $.LoadingOverlay("hide");
                     if (result.status == 'success') {
 
@@ -281,7 +281,7 @@
             $('#รายได้').val(data['รายได้']).prop('readonly', true)
             $('#Code').val(data['Code']).prop('readonly', true)
             $('#Status').val(data['Status']).prop('readonly', true)
-            console.log($('#Status').val());
+            
             if (data['Status'] == 'Y') {
                 $('#Status_span').addClass('text-bg-secondary').text('ใช้โค้ดส่วนลดแล้ว')
                 $('#discount').closest('.col-md-12').remove()
@@ -296,17 +296,17 @@
             event.preventDefault()
             let form = $('form')[0]
             let formdata = $(form).serializeArray()
-            console.log("🚀 ~ formdata", formdata)
+            
             let ele = {}
             for (let i = 0; i < formdata.length; i++) {
                 ele[formdata[i].name] = formdata[i].value
             }
-            console.log("🚀 ~ ele", ele)
+            
             let filesupload = await uploadFiles()
             filesupload.forEach(function (item, index) {
                 ele[`File${index + 1}`] = item
             })
-            console.log("🚀 ~ ele", ele);
+           
             if (ele['ใช้โค้ดส่วนลด'] == 'Y') {
                 ele['ราคาค่าจ้าง'] = parseInt(ele['ราคาค่าจ้าง']) - 100
                 if (ele['ราคาค่าจ้าง'] < 0) {
@@ -321,7 +321,7 @@
                 data: ele,
                 success: function (data) {
                     $.LoadingOverlay("hide");
-                    console.log("🚀 ~ data", data)
+                 
                     if (data.status == "success") {
                         Swal.fire({
                             icon: 'success',
@@ -371,11 +371,12 @@
             }
         }
         function initmap(geo) {
+            console.log(geo)
             rerverseGeocoding(geo.coords.latitude, geo.coords.longitude)
             map = new longdo.Map({
                 placeholder: document.getElementById('map'),
                 language: 'th',
-                zoom: 17,
+                zoom: 19,
             });
             map.Layers.setBase(longdo.Layers.NORMAL);
             map.Layers.add(longdo.Layers.POI);
