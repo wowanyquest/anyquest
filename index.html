@@ -1,196 +1,236 @@
+<!-- แก้ไขล่าสุด 10-07-2565 เวลา 15.30 น. -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-    <script src="https://api.longdo.com/map/?key=43c7e160bf5a19869fafa7afdbfec9c5"></script>
-    <title>REGISTER</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <script src="https://api.longdo.com/map/?key=43c7e160bf5a19869fafa7afdbfec9c5"></script>
 
-        body {
-            background-color: #f5f5f5;
-            width: 100vw;
-            min-height: 100vh;
-            /* display: flex;
+  <!-- code ต่อไปนี้ใช้สำหรับ select2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
+
+  <title>REGISTER</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      width: 100vw;
+      min-height: 100vh;
+      /* display: flex;
             justify-content: center;
             align-items: center; */
-            font-family: 'Prompt', sans-serif;
-            background: #e3cccc;
+      font-family: 'Prompt', sans-serif;
+      background: #e3cccc;
 
 
-        }
+    }
 
-        .container {
-            max-width: 800px;
-        }
+    .container {
+      max-width: 800px;
+    }
 
-        .form-control {
-            border-radius: 20px;
-        }
+    .form-control {
+      border-radius: 20px;
+    }
 
-        .form-control:focus {
-            border-color: #e3cccc;
-            box-shadow: 0 0 0 0.2rem rgba(227, 204, 204, 0.25);
-            background-color: #E24b4b;
-            color: #ffffff;
+    .form-control:focus {
+      border-color: #e3cccc;
+      box-shadow: 0 0 0 0.2rem rgba(227, 204, 204, 0.25);
+      background-color: #E24b4b;
+      color: #ffffff;
 
-        }
+    }
 
 
 
-        .display-5 {
-            color: #d72323;
-        }
+    .display-5 {
+      color: #d72323;
+    }
 
-        .btn-custom {
-            /* background-color: #d72323; */
-            /* color: #ffffff; */
-            min-width: 200px;
-            border-color: #d72323;
-            border-radius: 20px;
-        }
+    .btn-custom {
+      /* background-color: #d72323; */
+      /* color: #ffffff; */
+      min-width: 200px;
+      border-color: #d72323;
+      border-radius: 20px;
+    }
 
-        .btn-custom:hover {
-            background-color: #d72323;
-            color: #ffffff;
-            /* min-width: 200px;
+    .btn-custom:hover {
+      background-color: #d72323;
+      color: #ffffff;
+      /* min-width: 200px;
             border-color: #d72323;
             border-radius: 20px; */
-        }
+    }
 
-        #map {
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            max-height: 100vw;
-        }
+    #map {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      max-height: 100vw;
+    }
 
-        /* .navbar{
+    /* .navbar{
             background-color: #F2C94C;
         } */
-    </style>
+  </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="./icon-removebg-preview.png" alt="" width="50" class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="./icon-removebg-preview.png" alt="" width="50" class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./register.html">สมัครสมาชิก</a>
-                    </li>
+      <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./register.html">สมัครสมาชิก</a>
+          </li>
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container mt-4">
-        <form class="bg-white p-4 border shadow rounded-3 needs-validation d-none" novalidate>
-            <div class="row justify-content-center my-3">
-                <div class="display-5 fw-bold">
-                    Work Request
-                </div>
-            </div>
-            <div class="row justify-content-start g-3">
-                <div class="col-md-6">
-                    <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
-                    <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
-                    <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="อายุ">อายุ</label>
-                    <input type="text" class="form-control" id="อายุ" name="อายุ" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="อาชีพ">อาชีพ</label>
-                    <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="รายได้">รายได้</label>
-                    <input type="text" class="form-control" id="รายได้" name="รายได้" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="Code">โค้ดส่วนลด</label>
-                    <input type="text" class="form-control" id="Code" name="Code" required>
-                </div>
-                <div class="col-md-6">
-                    สถานะ:&nbsp;&nbsp;<h4><span class="badge" id="Status_span" name="Status_span"></span></h4>
-                    <input class="form-control" type="text" name="Status" id="Status" value="" hidden>
-                </div>
-                <div class="col-md-12">
-                    <label for="รายละเอียดงาน">รายละเอียดงาน</label>
-                    <textarea class="form-control" id="รายละเอียดงาน" name="รายละเอียดงาน" rows="5" placeholder="กรุณาใส่รายละเอียดงานให้ครบถ้วนตามที่ท่านต้องการ" required></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="แนบไฟล์">แนบรูปภาพ/วิดีโอ (สูงสุด 3 ไฟล์)</label>
-                    <input type="file" accept="image/*,video/*" multiple class="form-control" id="แนบไฟล์" name="แนบไฟล์" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="ราคาค่าจ้าง">ราคาค่าจ้าง</label>
-                    <input type="text" class="form-control" id="ราคาค่าจ้าง" name="ราคาค่าจ้าง" placeholder="ตั้งแต่ 20 - 1,000 บาท" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="Location">สถานที่ (Location)</label>
-                    <input type="text" class="form-control" id="Location" name="Location" required>
-                    <input type="text" class="form-control" id="Geolocation" name="Geolocation" hidden>
-
-                </div>
-                <div class="col-md-12">
-                    <div id="map" class="rounded"></div>
-                </div>
-                <div class="col-md-12">
-                    <label for="รายละเอียดสถานที่">รายละเอียดสถานที่</label>
-                    <textarea class="form-control" id="รายละเอียดสถานที่" name="รายละเอียดสถานที่" rows="2" placeholder="บ้านเลขที่/ซอย/ตึก/ชั้น/จุดสังเกต"></textarea>
-                </div>
-                <div class="col-md-12">
-                    <label for="หมายเหตุ">หมายเหตุ</label>
-                    <input class="form-control" id="หมายเหตุ" name="หมายเหตุ">
-                </div>
-                <div class="col-md-12">
-                    <div class="form-check fw-bold">
-                        <input class="form-check-input" type="checkbox" value="ใช้โค้ดส่วนลด" id="discount" name="discount">
-                        <label class="form-check-label" for="discount">
-                            ใช้โค้ดส่วนลด
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col text-center">
-                    <button type="submit" class="btn btn-custom">ส่งข้อมูล</button>
-                </div>
-            </div>
-        </form>
+        </ul>
+      </div>
     </div>
-    <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
-    <script>
-        // VConsole will be exported to `window.VConsole` by default.
-        var vConsole = new window.VConsole();
-    </script>
-    <script>
-        const scripturl = 'https://script.google.com/macros/s/AKfycbwjm6auKkX0HzUYc54_Fzz7AgXotCftNBcCCS9cQU1V6kZQ-e-ep4nyT1E-vJ_ylD4l/exec'
+  </nav>
+
+  <div class="container mt-4">
+    <form class="bg-white p-4 border shadow rounded-3 needs-validation d-none" novalidate>
+
+      <div class="row justify-content-center my-3">
+        <div class="display-5 fw-bold">Work Request</div>
+      </div>
+
+      <div class="row justify-content-start g-3">
+        <div class="col-md-6">
+          <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
+          <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
+        </div>
+        <div class="col-md-6">
+          <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
+          <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
+        </div>
+        <div class="col-md-6">
+          <label for="อายุ">อายุ</label>
+          <input type="text" class="form-control" id="อายุ" name="อายุ" required>
+        </div>
+        <div class="col-md-6">
+          <label for="อาชีพ">อาชีพ</label>
+          <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
+        </div>
+        <div class="col-md-6">
+            <label for="รายได้">รายได้</label>
+            <input type="text" class="form-control" id="รายได้" name="รายได้" required>
+        </div>
+
+        <!-- <div class="col-md-6">
+          <label class="form-label">ช่วงรายได้ *</label>
+          <select class="form-select" id="รายได้" name="รายได้" required>
+                        <option disabled selected value="">เลือกช่วงรายได้</option>
+                        <? var list = SpreadsheetApp.openById('1lTGua4jRMQpW6LAxHuwsmwks2aKut4lM7vQa3akJAgU').getSheetByName('Data List').getRange('A:A').getDisplayValues() ?>
+                        <? list = [...new Set(list.map(r=> r[0]).slice(1))].filter(r => r!= '') ?>
+                        <? list.forEach(datalist =>{ ?>
+                        <option value="<?= datalist ?>">
+                            <?= datalist ?>
+                        </option>
+                        <? }) ?>
+                    </select>
+        </div> -->
+
+        <div class="col-md-6">
+          <label for="Code">โค้ดส่วนลด</label>
+          <input type="text" class="form-control" id="Code" name="Code" required>
+        </div>
+
+        <div class="col-md-12">
+          <label for="รายละเอียดงาน">รายละเอียดงาน</label>
+          <textarea class="form-control" id="รายละเอียดงาน" name="รายละเอียดงาน" rows="5" placeholder="กรุณาใส่รายละเอียดงานให้ครบถ้วนตามที่ท่านต้องการ" required></textarea>
+        </div>
+
+        <div class="col-md-6">
+          <label for="แนบไฟล์">แนบรูปภาพ/วิดีโอ (สูงสุด 3 ไฟล์)</label>
+          <input type="file" accept="image/*" multiple class="form-control" id="แนบไฟล์" name="แนบไฟล์" required>
+        </div>
+
+        <div class="col-md-12 d-none">
+          <div class="row justify-content-center" id="preview"></div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="ราคาค่าจ้าง">ราคาค่าจ้าง</label>
+          <input type="number" min="20" max="3000" class="form-control" id="ราคาค่าจ้าง" name="ราคาค่าจ้าง" placeholder="ตั้งแต่ 20 - 3,000 บาท" required>
+        </div>
+
+        <div class="col-md-12">
+          <label for="Location">สถานที่ (Location)</label>
+          <input type="text" class="form-control" id="Location" name="Location" required>
+          <input type="text" class="form-control" id="Geolocation" name="Geolocation" hidden>
+        </div>
+
+        <div class="col-md-12">
+          <div id="map" class="rounded"></div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="รายละเอียดสถานที่">รายละเอียดสถานที่</label>
+          <textarea class="form-control" id="รายละเอียดสถานที่" name="รายละเอียดสถานที่" rows="2" placeholder="บ้านเลขที่/ซอย/ตึก/ชั้น/จุดสังเกต"></textarea>
+        </div>
+
+        <div class="col-md-12">
+          <label for="หมายเหตุ">หมายเหตุ</label>
+          <input class="form-control" id="หมายเหตุ" name="หมายเหตุ">
+        </div>
+
+        <div class="col-md-6">
+          สถานะ:&nbsp;&nbsp;<h4><span class="badge" id="Status_span" name="Status_span"></span></h4>
+          <input class="form-control" type="text" name="Status" id="Status" value="" hidden>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-check fw-bold">
+            <input class="form-check-input" type="checkbox" value="ใช้โค้ดส่วนลด" id="discount" name="discount">
+            <label class="form-check-label" for="discount">ใช้โค้ดส่วนลด</label>
+          </div>
+        </div>
+
+      </div>
+      <div class="row mt-4">
+        <div class="col text-center">
+          <button type="submit" class="btn btn-custom">ส่งข้อมูล</button>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+  <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    // VConsole will be exported to `window.VConsole` by default.
+        // var vConsole = new window.VConsole();
+  </script>
+  <script>
+    const scripturl = 'https://script.google.com/macros/s/AKfycbwjm6auKkX0HzUYc54_Fzz7AgXotCftNBcCCS9cQU1V6kZQ-e-ep4nyT1E-vJ_ylD4l/exec'
         const scripturl_request = 'https://script.google.com/macros/s/AKfycbz96KVstG87T2HHcFfLqYcYbycoxN5yv-9dZkwMjjK8cFdiP6F1rgkXAVn4qWgprXel/exec'
         var foldertoken
         $(document).ready(function () {
@@ -236,6 +276,26 @@
                             $('#แนบไฟล์').val('')
                         }
                     })
+                } else {
+                    let files = []
+                    let fileinput = document.getElementById('แนบไฟล์').files
+                    for (let i = 0; i < fileinput.length; i++) {
+                        files.push(fileinput[i])
+                    }
+
+                    files.forEach(file => {
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onloadend = function (e) {
+                            let img = document.createElement("img");
+                            img.src = e.target.result;
+                            $(img).addClass('img-fluid')
+                            let div = document.createElement("div");
+                            $(div).addClass('col-md-4')
+                            $(div).append(img)
+                            $('#preview').append(div)
+                        }
+                    })
                 }
 
             })
@@ -253,7 +313,7 @@
                     num: num
                 },
                 success: function (result) {
-                  
+
                     $.LoadingOverlay("hide");
                     if (result.status == 'success') {
 
@@ -281,7 +341,7 @@
             $('#รายได้').val(data['รายได้']).prop('readonly', true)
             $('#Code').val(data['Code']).prop('readonly', true)
             $('#Status').val(data['Status']).prop('readonly', true)
-            
+
             if (data['Status'] == 'Y') {
                 $('#Status_span').addClass('text-bg-secondary').text('ใช้โค้ดส่วนลดแล้ว')
                 $('#discount').closest('.col-md-12').remove()
@@ -296,17 +356,17 @@
             event.preventDefault()
             let form = $('form')[0]
             let formdata = $(form).serializeArray()
-            
+
             let ele = {}
             for (let i = 0; i < formdata.length; i++) {
                 ele[formdata[i].name] = formdata[i].value
             }
-            
+
             let filesupload = await uploadFiles()
             filesupload.forEach(function (item, index) {
                 ele[`File${index + 1}`] = item
             })
-           
+
             if (ele['discount'] == 'ใช้โค้ดส่วนลด') {
                 ele['ราคาลดแล้ว'] = parseInt(ele['ราคาค่าจ้าง']) - 100
                 if (ele['ราคาลดแล้ว'] < 0) {
@@ -323,7 +383,7 @@
                 data: ele,
                 success: function (data) {
                     $.LoadingOverlay("hide");
-                 
+
                     if (data.status == "success") {
                         Swal.fire({
                             icon: 'success',
@@ -338,9 +398,9 @@
                 }
             })
         }
-    </script>
-    <script>
-        (() => {
+  </script>
+  <script>
+    (() => {
             'use strict'
 
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -362,9 +422,9 @@
                 }, false)
             })
         })()
-    </script>
-    <script>
-        var map;
+  </script>
+  <script>
+    var map;
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(initmap)
@@ -435,9 +495,9 @@
                 }
             });
         }
-    </script>
-    <script>
-        let firstfile = true
+  </script>
+  <script>
+    let firstfile = true
 
         function showUploadEnd(e) {
             Swal.fire({
@@ -559,9 +619,9 @@
             })
         }
 
-    </script>
-    <script>
-        async function gdriveUpload(opt) {
+  </script>
+  <script>
+    async function gdriveUpload(opt) {
             if (!(opt.file && opt.token)) throw new TypeError("bad param");
             if (!opt.file.size) return new Error("empty file");
             let res
@@ -632,9 +692,30 @@
             }
         }
 
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    $(document).ready(function () {
+            $("#fullname").select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: "พิมพ์บางส่วนเพียง 3-4 ตัวอักษร",
+                allowClear: true
+            });
+        });
+        $(document).ready(function () {
+            $("#followTo").select2({
+                theme: "bootstrap-5",
+                width: '100%',
+                placeholder: "พิมพ์บางส่วนเพียง 3-4 ตัวอักษร",
+                allowClear: true
+            });
+        });
+
+  </script>
 </body>
 
 </html>
