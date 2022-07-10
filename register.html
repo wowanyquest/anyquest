@@ -97,7 +97,7 @@
     </nav>
     <div class="container mt-4">
         <form class="bg-white p-4 border shadow rounded-3 needs-validation" novalidate>
-             <input type="text" name="ยอมรับ PDPA" id="ยอมรับ PDPA" hidden>
+            <input type="text" name="ยอมรับ PDPA" id="ยอมรับ PDPA" hidden>
             <div class="row justify-content-center my-3">
                 <div class="display-5 fw-bold">
                     สมัครสมาชิก
@@ -106,23 +106,23 @@
             <div class="row justify-content-start g-3">
                 <div class="col-md-6">
                     <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
-                    <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" requireded>
+                    <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
                 </div>
                 <div class="col-md-6">
                     <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
-                    <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" requireded>
+                    <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
                 </div>
                 <div class="col-md-6">
                     <label for="อายุ">อายุ</label>
-                    <input type="text" class="form-control" id="อายุ" name="อายุ" requireded>
+                    <input type="text" class="form-control" id="อายุ" name="อายุ" required>
                 </div>
                 <div class="col-md-6">
                     <label for="อาชีพ">อาชีพ</label>
-                    <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" requireded>
+                    <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
                 </div>
                 <div class="col-md-6">
                     <label for="รายได้">รายได้</label>
-                    <input type="text" class="form-control" id="รายได้" name="รายได้" requireded>
+                    <input type="text" class="form-control" id="รายได้" name="รายได้" required>
                 </div>
 
             </div>
@@ -133,7 +133,7 @@
             </div>
         </form>
     </div>
-     <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -173,18 +173,18 @@
             })
 
         });
-        
-         function showPDPA() {
-                $('#pdpaConsent').modal('show')
-                $('#accept-btn').click(function () {
-                    $('#pdpaConsent').modal('hide')
-                    $('input[name="ยอมรับ PDPA"]').val('Accept')
-                })
-                $('#cancel-btn').click(function () {
-                    $('#pdpaConsent').modal('hide')
-                    location.reload()
-                })
-            }
+
+        function showPDPA() {
+            $('#pdpaConsent').modal('show')
+            $('#accept-btn').click(function () {
+                $('#pdpaConsent').modal('hide')
+                $('input[name="ยอมรับ PDPA"]').val('Accept')
+            })
+            $('#cancel-btn').click(function () {
+                $('#pdpaConsent').modal('hide')
+                location.reload()
+            })
+        }
 
         function formsubmit() {
             event.preventDefault()
