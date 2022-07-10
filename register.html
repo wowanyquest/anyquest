@@ -166,6 +166,7 @@
     <script>
         const scripturl = 'https://script.google.com/macros/s/AKfycbwjm6auKkX0HzUYc54_Fzz7AgXotCftNBcCCS9cQU1V6kZQ-e-ep4nyT1E-vJ_ylD4l/exec'
         $(document).ready(function () {
+            showPDPA()
             $('.form-control').each(function () {
                 let label = $(this).parent().find('label').text();
                 $(this).parent().append(` <div class="invalid-feedback">กรุณาใส่ ${label}</div>`)
