@@ -374,7 +374,7 @@
             table = $('#table-data').DataTable({
                 data: data,
                 scrollX: true,
-                order: [[1, 'desc']],
+                order: [[2, 'desc']],
                 // createdRow: function (row, data, dataIndex) {
 
                 //     if (data.signature_staff != '' && !data.signature_manager) {
@@ -388,7 +388,7 @@
                         className: 'align-middle text-center'
                     },
                     {
-                        targets: [1],
+                        targets: [2],
                         visible: false,
                     }
                 ],
@@ -396,6 +396,18 @@
                     {
                         data: 'No',
                         title: 'ลำดับที่',
+                    },
+                    {
+                        data: 'รายละเอียด',
+                        title: 'รายละเอียด',
+                        render: function (data, type, row, meta) {
+                            return '<button class="btn btn-link detail text-nowrap">รายละเอียด!</button>'
+
+                        }
+                    },
+                    {
+                        data: 'รหัสงาน',
+                        title: 'รหัสงาน',
                     },
                     {
                         data: 'Timestamp',
@@ -421,14 +433,6 @@
                         title: 'แผนที่',
                         render: function (data, type, row, meta) {
                             return `<a href="https://www.google.com/maps?q=${data}" class="btn btn-sm btn-primary text-nowrap" target="_blank">ดูแผนที่</a>`
-                        }
-                    },
-                    {
-                        data: 'รายละเอียด',
-                        title: 'รายละเอียด',
-                        render: function (data, type, row, meta) {
-                            return '<button class="btn btn-link detail text-nowrap">รายละเอียด!</button>'
-
                         }
                     },
                 ]
