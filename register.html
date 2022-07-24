@@ -41,13 +41,13 @@
             border-radius: 5px;
         }
 
-        .form-control:focus {
+        /* .form-control:focus {
             border-color: #e3cccc;
             box-shadow: 0 0 0 0.2rem rgba(227, 204, 204, 0.25);
             background-color: #FAD2D2;
             color: #ffffff;
 
-        }
+        } */
 
 
 
@@ -69,6 +69,20 @@
             /* min-width: 200px;
             border-color: #d72323;
             border-radius: 20px; */
+        }
+
+        .vertical-buttons {
+            flex-direction: column;
+        }
+
+        .top-margin {
+            margin-top: .5em;
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            /* background-color: #dc3741; */
+            /* color: #fff; */
+            font-size: .9em;
         }
 
         /* .navbar{
@@ -100,15 +114,15 @@
             <input type="text" name="ยอมรับ PDPA" id="ยอมรับ PDPA" hidden>
             <div class="row justify-content-center my-3">
                 <div class="display-5 fw-bold">
-                    สมัครสมาชิก
+                    สมัครสมาชิกผู้ว่าจ้าง
                 </div>
             </div>
-            
+
             <section class="rounded-3 m-2 border border-2 shadow bg-light text-start">
-                    <!-- <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;"> -->
+                <!-- <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;"> -->
 
-                  <p class="card-text mali text-primary text-center"><b>คำอธิบายการสมัครเป็นผู้ว่าจ้างงาน AnyQuest</b></p>             
-                  <ol>              
+                <p class="card-text mali text-primary text-center"><b>คำอธิบายการสมัครเป็นผู้ว่าจ้างงาน AnyQuest</b></p>
+                <ol>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
@@ -116,49 +130,49 @@
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
-                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li> 
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <p class="card-text mali text-primary"><b>xxxxxxxxxxxxxxxxxxxxxxxxx</b></p>
-                  </ol>
+                </ol>
             </section>
-            
-            <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow bg-light">
-             <div class="row justify-content-start p-1">
-<!--               <div class="row justify-content-start g-3"> -->
-                <div class="col-md-6">
-                    <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
-                    <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
-                    <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="อายุ">อายุ</label>
-                    <input type="text" class="form-control" id="อายุ" name="อายุ" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="อาชีพ">อาชีพ</label>
-                    <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="รายได้">รายได้</label>
-                    <input type="text" class="form-control" id="รายได้" name="รายได้" required>
-                </div>
 
-            </div>
-            <div class="row mt-4">
-                <div class="col text-center">
-                    <button type="submit" class="btn btn-custom">สมัครสมาชิก</button>
+            <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow ">
+                <div class="row justify-content-start p-1 g-3">
+                    <!--               <div class="row justify-content-start g-3"> -->
+                    <div class="col-md-6">
+                        <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
+                        <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
+                        <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="อายุ">อายุ</label>
+                        <input type="text" class="form-control" id="อายุ" name="อายุ" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="อาชีพ">อาชีพ</label>
+                        <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="รายได้">รายได้</label>
+                        <input type="text" class="form-control" id="รายได้" name="รายได้" required>
+                    </div>
+
                 </div>
-            </div>
-          </section>
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-custom">สมัครสมาชิก</button>
+                    </div>
+                </div>
+            </section>
         </form>
     </div>
     <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header bg-warning text-dark">
+                    <div class="modal-header" style="background-color: #d72323; color: #fff">
                         <h5 class="modal-title">ข้อตกลงการใช้งานระบบ</h5>
                     </div>
                     <div class="modal-body">
@@ -178,7 +192,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="accept-btn" class="btn btn-primary">Accept</button>
+                        <button type="button" id="accept-btn" class="btn btn-warning">Accept</button>
                     </div>
                 </div>
             </div>
@@ -186,6 +200,7 @@
     </div>
     <script>
         const scripturl = 'https://script.google.com/macros/s/AKfycbwjm6auKkX0HzUYc54_Fzz7AgXotCftNBcCCS9cQU1V6kZQ-e-ep4nyT1E-vJ_ylD4l/exec'
+        // const scripturl = 'https://script.google.com/macros/s/AKfycbyx7C6vwTJNLLBkU5zpik5QnAGj_e7RuHzrTVo0uGBmEfwJf9utZCvnQVxCJ7mZw9vl/exec'
         $(document).ready(function () {
             showPDPA()
             $('.form-control').each(function () {
@@ -217,25 +232,43 @@
                 ele[formdata[i].name] = formdata[i].value
             }
             console.log("🚀 ~ ele", ele)
-            $.LoadingOverlay("show");
-            $.ajax({
-                url: scripturl + '?opt=register',
-                type: 'POST',
-                data: ele,
-                success: function (data) {
-                    $.LoadingOverlay("hide");
-                    console.log("🚀 ~ data", data)
-                    if (data.status == "success") {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'สมัครสมาชิกสำเร็จ',
-                            confirmButtonText: 'ตกลง',
-                        }).then(() => {
-                            window.location.href = "./index.html"
-                        })
-                    } else {
-                        alert("สมัครสมาชิกไม่สำเร็จ")
-                    }
+            Swal.fire({
+                icon: 'question',
+                title: 'ยืนยันการสมัครสมาชิก',
+                text: 'ท่านต้องการบันทึกข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg'
+                },
+                allowOutsideClick: false,
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    $.LoadingOverlay("show");
+                    $.ajax({
+                        url: scripturl + '?opt=register',
+                        type: 'POST',
+                        data: ele,
+                        success: function (data) {
+                            $.LoadingOverlay("hide");
+                            console.log("🚀 ~ data", data)
+                            if (data.status == "success") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สมัครสมาชิกสำเร็จ',
+                                    confirmButtonText: 'ตกลง',
+                                }).then(() => {
+                                    window.location.href = "./index.html"
+                                })
+                            } else {
+                                alert("สมัครสมาชิกไม่สำเร็จ")
+                            }
+                        }
+                    })
                 }
             })
         }
