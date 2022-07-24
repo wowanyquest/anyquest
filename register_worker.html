@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <title>REGISTER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            width: 100vw;
+            min-height: 100vh;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            font-family: 'Prompt', sans-serif;
+            background: #ECA39B;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 5px;
+        }
+
+        /* .form-control:focus {
+            border-color: #e3cccc;
+            box-shadow: 0 0 0 0.2rem rgba(227, 204, 204, 0.25);
+            background-color: #FAD2D2;
+            color: #ffffff;
+        } */
+        .display-5 {
+            color: #d72323;
+        }
+
+        .btn-custom {
+            /* background-color: #d72323; */
+            /* color: #ffffff; */
+            min-width: 200px;
+            border-color: #d72323;
+            border-radius: 20px;
+        }
+
+        .btn-custom:hover {
+            background-color: #d72323;
+            color: #ffffff;
+            /* min-width: 200px;
+            border-color: #d72323;
+            border-radius: 20px; */
+        }
+
+        .vertical-buttons {
+            flex-direction: column;
+        }
+
+        .top-margin {
+            margin-top: .5em;
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            /* background-color: #dc3741; */
+            /* color: #fff; */
+            font-size: .9em;
+        }
+
+        /* .navbar{
+            background-color: #F2C94C;
+        } */
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./icon-removebg-preview.png" alt="" width="50" class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <form class="bg-white p-4 border shadow rounded-3 needs-validation" novalidate>
+            <input type="text" name="ยอมรับ PDPA" id="ยอมรับ PDPA" hidden>
+            <div class="row justify-content-center my-3">
+                <div class="display-5 fw-bold">
+                    สมัครสมาชิกผู้รับจ้าง
+                </div>
+            </div>
+            <section class="rounded-3 m-2 border border-2 shadow bg-light text-start">
+                <!-- <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;"> -->
+                <p class="card-text mali text-primary text-center"><b>คำอธิบายการสมัครเป็นผู้ว่าจ้างงาน AnyQuest</b></p>
+                <ol>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
+                    <p class="card-text mali text-primary"><b>xxxxxxxxxxxxxxxxxxxxxxxxx</b></p>
+                </ol>
+            </section>
+            <section class="rounded-3 m-2 mt-4 p-3 border border-2 shadow ">
+                <div class="row justify-content-start p-1 g-3">
+                    <!--               <div class="row justify-content-start g-3"> -->
+                    <div class="col-md-6">
+                        <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
+                        <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="เพศ">เพศ</label>
+                        <select class="form-select" id="เพศ" name="เพศ" required>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="วันเดือนปีเกิด">วันเดือนปีเกิด</label>
+                        <input type="date" class="form-control" id="วันเดือนปีเกิด" name="วันเดือนปีเกิด" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
+                        <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="เลขบัตรประชาชน">เลขบัตรประชาชน 13 หลัก</label>
+                        <input type="text" class="form-control" maxlength="13" id="เลขบัตรประชาชน" name="เลขบัตรประชาชน" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="โซนพื้นที่ปฏิบัติงาน">โซนพื้นที่ปฏิบัติงาน</label>
+                        <input type="text" class="form-control" id="โซนพื้นที่ปฏิบัติงาน" name="โซนพื้นที่ปฏิบัติงาน" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="เลขที่บัญชีหรือรหัสพร้อมเพย์">เลขที่บัญชี หรือ รหัสพร้อมเพย์</label>
+                        <input type="text" class="form-control" id="เลขที่บัญชีหรือรหัสพร้อมเพย์" name="เลขที่บัญชีหรือรหัสพร้อมเพย์" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ธนาคาร">ธนาคาร (กรณีใช้เลขที่บัญชี)</label>
+                        <select class="form-select" id="ธนาคาร" name="ธนาคาร" required>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label>กลุ่มงานที่สามารถรับทำงานได้</label>
+                        <div id="job_group" class="row g-2 mt-2 justify-content-start"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="จำนวนวัคซีนโควิดที่ได้รับ">จำนวนวัคซีนโควิดที่ได้รับ</label>
+                        <select class="form-select" id="จำนวนวัคซีนโควิดที่ได้รับ" name="จำนวนวัคซีนโควิดที่ได้รับ" required>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="แนบไฟล์">แนบรูปภาพใบหน้าของผู้สมัคร</label>
+                        <input type="file" accept="image/*" class="form-control" id="แนบไฟล์" name="แนบไฟล์" required>
+                    </div>
+                    <div class="col-md-12 d-none">
+                        <div class="row justify-content-center" id="preview"></div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-custom">สมัครสมาชิก</button>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+    <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #d72323; color: #fff">
+                        <h5 class="modal-title">ข้อตกลงการใช้งานระบบ</h5>
+                    </div>
+                    <div class="modal-body">
+                        &emsp;&emsp;&emsp;&emsp;<strong>ข้อตกลงการใช้งานระบบ</strong>
+                        ข้าพเจ้า<strong>ยินยอม</strong> ให้ชมรมช้างปูน SCG <strong> เปิดเผยข้อมูลส่วนบุคคล</strong>ของข้าพเจ้า เพื่ออนุญาตให้<strong>ชมรมช้างปูน</strong>
+                        หรือ<strong>พันธมิตรของชมรมฯ</strong> เพื่อนำข้อมูลของข้าพเจ้า ไปใช้ดำเนินการจัดทำกิจกรรมต่าง ๆ สำหรับสมาชิกของชมรมฯ
+                        <br><br>
+                        &emsp;&emsp;&emsp;&emsp;ทั้งนี้ ก่อนการแสดงเจตนา <strong>ข้าพเจ้าได้อ่านรายละเอียดจากเอกสารชี้แจงข้อมูล</strong> หรือได้รับคำอธิบายจากชมรมช้างปูน ถึงวัตถุประสงค์ในการเก็บรวบรวม การใช้ การเปิดเผย หรือการประมวลผลข้อมูลส่วนบุคคล
+                        และข้าพเจ้า <strong>มีความเข้าใจดีแล้ว</strong>
+                        ข้าพเจ้าให้ความยินยอมหรือปฏิเสธไม่ให้ความยินยอมในเอกสารนี้ด้วยความสมัครใจ ปราศจากการบังคับหรือชักจูง และข้าพเจ้าทราบว่า ข้าพเจ้าสามารถ<strong>ถอนความยินยอมนี้เสียเมื่อใดก็ได้</strong>
+                        เว้นแต่ในกรณี มีข้อจำกัดสิทธิตามกฎหมายหรือยังมีสัญญาระหว่างข้าพเจ้ากับชมรมช้างปูน ที่ให้ประโยชน์แก่ข้าพเจ้าอยู่
+                        <br><br>
+                        &emsp;&emsp;&emsp;&emsp;กรณีที่ข้าพเจ้าประสงค์จะขอถอนความยินยอม ข้าพเจ้าทราบว่าการถอนความยินยอมจะมีผลทำให้ ข้าพเจ้าอาจจะได้รับ<strong>ความสะดวกในการใช้บริการน้อยลง</strong> หรือ
+                        <strong>ไม่สามารถเข้าถึงฟังก์ชันการใช้งานบางอย่าง</strong>ได้
+                        และข้าพเจ้าทราบว่า การถอนความยินยอมดังกล่าว
+                        <strong>ไม่มีผลกระทบต่อการประมวลผลข้อมูล</strong>ส่วนบุคคล ที่ได้ดำเนินการเสร็จสิ้นไปแล้ว ก่อนการถอนความยินยอม
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="accept-btn" class="btn btn-warning">Accept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const scripturl = 'https://script.google.com/macros/s/AKfycbyxu01QkDD7FlhOSYyqVysSc9SihWQf9mJoqtjhKADqH9jJih0udQTYC9ExJFg0ahu8/exec'
+        // const scripturl = 'https://script.google.com/macros/s/AKfycbzPYVNw2oJbPUgugx2qtpTbltQJp4IHHhroGIEX1Oidd4CO8JXf2HtxmPPZQ0bdHJs/exec'
+        var foldertoken
+        $(document).ready(function () {
+            showPDPA()
+            setDropdown()
+            getFolderToken()
+            $('.form-control, form-select').each(function () {
+                let label = $(this).parent().find('label').text();
+                $(this).parent().append(` <div class="invalid-feedback">กรุณาใส่ ${label}</div>`)
+            })
+            $('#แนบไฟล์').change(function () {
+                let file = document.getElementById('แนบไฟล์').files[0]
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = function (e) {
+                    let img = document.createElement("img");
+                    img.src = e.target.result;
+                    $(img).attr('style', 'max-width:300px');
+                    $('#preview').append(img)
+                }
+                $('#preview').parent().removeClass('d-none')
+            })
+            $('#ธนาคาร').change(function () {
+                if ($(this).val() == 'อื่นๆ') {
+                    Swal.fire({
+                        input: 'text',
+                        title: 'กรุณาระบุธนาคาร',
+                        inputPlaceholder: 'ชื่อธนาคาร',
+                        showCancelButton: true,
+                        allowOutsideClick: false,
+                        buttonsStyling: false,
+                        customClass: {
+                            actions: 'vertical-buttons',
+                            cancelButton: 'btn btn-link text-muted mt-3',
+                            confirmButton: 'btn btn-primary btn-lg',
+                            input: 'form-control form-control-lg text-center'
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'กรุณาใส่ชื่อธนาคาร'
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.isCanceled) {
+                            $('#ธนาคาร').val('')
+                        }
+                        if (result.value) {
+                            $('#ธนาคาร').append(`<option val="${result.value}">${result.value}</option>`).val(result.value)
+                        }
+                    })
+                }
+            })
+            $('#เพศ').change(function () {
+                if ($(this).val() == 'อื่นๆ') {
+                    Swal.fire({
+                        input: 'text',
+                        title: 'กรุณาระบุเพศ',
+                        inputPlaceholder: 'เพศ',
+                        showCancelButton: true,
+                        allowOutsideClick: false,
+                        buttonsStyling: false,
+                        customClass: {
+                            actions: 'vertical-buttons',
+                            cancelButton: 'btn btn-link text-muted mt-3',
+                            confirmButton: 'btn btn-primary btn-lg',
+                            input: 'form-control form-control-lg text-center'
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'กรุณาใส่เพศ'
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.isCanceled) {
+                            $('#เพศ').val('')
+                        }
+                        if (result.value) {
+                            $('#เพศ').append(`<option val="${result.value}">${result.value}</option>`).val(result.value)
+                        }
+                    })
+                }
+            })
+            $('#เลขบัตรประชาชน').on('keyup change', function () {
+                if ($.trim($(this).val()) != '' && $(this).val().length == 13) {
+                    id = $(this).val().replace(/-/g, "");
+                    var result = Script_checkID(id);
+                    if (result === false) {
+                        Swal.fire({
+                            title: 'เลขบัตรประชาชนไม่ถูกต้อง',
+                            text: 'กรุณาตรวจสอบใหม่อีกครั้ง',
+                            type: 'error',
+                            confirmButtonText: 'ตกลง',
+                        })
+                    }
+                }
+            })
+        });
+        function getFolderToken() {
+            $.ajax({
+                url: scripturl,
+                type: 'POST',
+                data: {
+                    name: $('#ชื่อ-สกุล').val(),
+                    opt: 'getFolderToken'
+                },
+                success: function (data) {
+                    foldertoken = data
+                }
+            })
+        }
+        function setDropdown() {
+            $.ajax({
+                url: scripturl,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    opt: 'getdatalist'
+                },
+                success: function (data) {
+                    Object.keys(data).forEach(function (key) {
+                        if (key == 'กลุ่มงานที่สามารถรับทำงานได้') return setcheckbox(data[key])
+                        data[key].forEach(function (item) {
+                            $('#' + key).append(`<option value="${item}">${item}</option>`)
+                        })
+                    })
+                }
+            })
+        }
+        function setcheckbox(arr = ['test001', 'test002', 'test003', 'test004', 'test005', 'test006']) {
+            let html = ''
+            arr.forEach(function (item) {
+                html += `<div class="col-6 col-md-4">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="${item}">
+                        <label class="form-check-label">${item}</label>
+                    </div>
+                </div>`
+            })
+            $('#job_group').html(html)
+        }
+        function Script_checkID(id) {
+            //if(! IsNumeric(id)) return false;
+            //if(id.substring(0,1)== 0) return false;
+            if (id.length != 13) return false;
+            for (i = 0, sum = 0; i < 12; i++)
+                sum += parseFloat(id.charAt(i)) * (13 - i);
+            if ((11 - sum % 11) % 10 != parseFloat(id.charAt(12))) return false;
+            return true;
+        }
+        function showPDPA() {
+            $('#pdpaConsent').modal('show')
+            $('#accept-btn').click(function () {
+                $('#pdpaConsent').modal('hide')
+                $('input[name="ยอมรับ PDPA"]').val('Accept')
+            })
+            $('#cancel-btn').click(function () {
+                $('#pdpaConsent').modal('hide')
+                location.reload()
+            })
+        }
+        function formsubmit() {
+            event.preventDefault()
+            if (Script_checkID($('#เลขบัตรประชาชน').val().replace(/-/g, "")) == false) {
+                Swal.fire({
+                    title: 'เลขบัตรประชาชนไม่ถูกต้อง',
+                    text: 'กรุณาตรวจสอบใหม่อีกครั้ง',
+                    type: 'error',
+                    confirmButtonText: 'ตกลง',
+                })
+                return false
+            }
+            Swal.fire({
+                icon: 'question',
+                title: 'ยืนยันการสมัครสมาชิก',
+                text: 'ท่านต้องการบันทึกข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg'
+                },
+                allowOutsideClick: false,
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    let form = $('form')[0]
+                    let formdata = $(form).serializeArray()
+                    let ele = {}
+                    for (let i = 0; i < formdata.length; i++) {
+                        ele[formdata[i].name] = formdata[i].value
+                    }
+                    let file = await uploadFiles()
+                    let job_group = getJobGroup()
+                    ele["รูปภาพใบหน้าของผู้สมัคร"] = file
+                    ele["กลุ่มงานที่สามารถรับทำงานได้"] = job_group
+                    Swal.close()
+                    $.LoadingOverlay("show")
+                    $.ajax({
+                        url: scripturl + '?opt=register',
+                        type: 'POST',
+                        data: ele,
+                        success: function (data) {
+                            $.LoadingOverlay("hide");
+                            if (data.status == "success") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สมัครสมาชิกสำเร็จ',
+                                    confirmButtonText: 'ตกลง',
+                                }).then(() => {
+                                    window.location.href = "./job_list.html"
+                                })
+                            } else {
+                                alert("สมัครสมาชิกไม่สำเร็จ")
+                            }
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+    <script>
+        async function uploadFiles() {
+            const handleProgress = function (value) {
+                if (value === 0) console.log("Uploading...");
+                else {
+                    console.log("Uploading... " + value * 100 + "%");
+                }
+                let percent = Math.round(value * 100)
+                Swal.update({
+                    title: "อัพโหลดรูปภาพ",
+                    html: `<p class="text-danger">**ห้ามปิดหน้านี้จนกว่าจะบันทึกสำเร็จ<\p><div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar " style="width: ${percent}%;" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100">${percent}%</div>
+</div>`,
+                    allowOutsideClick: false,
+                    showConfirmButton: false
+                })
+                // Swal.showLoading(Swal.getConfirmButton())
+            }
+            Swal.fire({
+                icon: 'info',
+                title: 'กำลังอัพโหลดไฟล์',
+                html: 'uploading...<br><br><p class="text-danger">**ห้ามปิดหน้านี้จนกว่าจะบันทึกสำเร็จ<\p>',
+                allowOutsideClick: false
+            })
+            let chunkSize = Math.round(0.75 * 1024 * 1024)
+            let file = document.getElementById('แนบไฟล์').files[0]
+            let now = new Date()
+            let metadata = {
+                name: $('#ชื่อ-สกุล').val() + "_1 " + now.toLocaleString('th-TH', {
+                    hour12: false,
+                    month: "numeric",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric"
+                })
+            };
+            let res1 = await gdriveUpload({ ...foldertoken, file, metadata, chunkSize, onProgress: handleProgress })
+            let file_id = res1.id
+            return 'https://drive.google.com/uc?id=' + file_id
+        }
+        function getJobGroup() {
+            let job_group = []
+            $('#job_group input[type="checkbox"]').each(function () {
+                if ($(this).is(':checked')) {
+                    job_group.push($(this).val())
+                }
+            })
+            return job_group.join(",")
+        }
+    </script>
+    <script>
+        (() => {
+            'use strict'
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        form.classList.add('was-validated')
+                        $(form).find(":invalid").first().focus();
+                    } else {
+                        formsubmit()
+                    }
+                }, false)
+            })
+        })()
+    </script>
+    <script>
+        async function gdriveUpload(opt) {
+            if (!(opt.file && opt.token)) throw new TypeError("bad param");
+            if (!opt.file.size) return new Error("empty file");
+            let res
+            try {
+                const location = await getUploadLocation();
+                if (location instanceof Error) return location;
+                res = await uploadChunks(location);
+                if (res instanceof Error) return res;
+                return res;
+            } catch (error) {
+                if (error instanceof Error) return error;
+                throw error;
+            }
+            async function getUploadLocation() {
+                let metadata = { mimeType: opt.file.type, name: opt.file.name };
+                if (opt.folder) metadata.parents = [opt.folder];
+                if (opt.metadata) metadata = { ...metadata, ...opt.metadata };
+                try {
+                    const response = await fetch(
+                        "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable",
+                        {
+                            method: "POST", cache: "no-cache",
+                            headers: {
+                                Authorization: "Bearer " + opt.token,
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(metadata)
+                        });
+                    if (!response.ok) return new Error(`create: ${response.status} ${response.statusText}`);
+                    const location = response.headers.get("location");
+                    if (!location) return new Error("no location");
+                    return location;
+                } catch (error) {
+                    if (error instanceof Error) return error;
+                    throw error;
+                }
+            }
+            async function uploadChunks(location) {
+                const onProgress = opt.onProgress || ((_v) => { });
+                const chunkSize = opt.chunkSize || _DEFAULT.chunkSize;
+                if (chunkSize <= 0 || chunkSize % (256 * 1024))
+                    throw TypeError("bad chunkSize: " + chunkSize);
+                const size = opt.file.size;
+                try {
+                    for (let end = NaN, start = 0; ; start = end + 1) {
+                        onProgress(start / size); // signal progress
+                        end = Math.min(start + chunkSize, size);
+                        const blob = await opt.file.slice(start, end).arrayBuffer(); // read from file
+                        const response = await fetch(location, // upload the chunk to location
+                            {
+                                method: "PUT", cache: "no-cache", body: blob,
+                                headers: { "Content-Range": `bytes ${start}-${end - 1}/${size}` }
+                            });
+                        if (response.ok) { // all done
+                            onProgress(1); // signal 100% progress
+                            return response.json(); // success
+                        }
+                        if (response.status != 308) return new Error(`upload: ${response.status} ${response.statusText}`);
+                        const r = response.headers.get("Range");
+                        if (!r) return new Error("no Range");
+                        end = parseInt(r.substr(r.indexOf("-") + 1)); // get where the real upload end
+                        if (!Number.isInteger(end) || end <= start) return new Error("bad range: " + r);
+                    }
+                } catch (error) {
+                    if (error instanceof Error) return error;
+                    throw error;
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
