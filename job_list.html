@@ -1,0 +1,1030 @@
+<!-- แก้ไขล่าสุด 10-07-2565 เวลา 15.30 น. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <script src="https://api.longdo.com/map/?key=43c7e160bf5a19869fafa7afdbfec9c5"></script>
+    <!-- code ต่อไปนี้ใช้สำหรับ select2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.1.1/dist/select2-bootstrap-5-theme.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <title>Work Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            width: 100vw;
+            min-height: 100vh;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            font-family: 'Prompt', sans-serif;
+            background: #e3cccc;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        /* .form-control:focus {
+            border-color: #e3cccc;
+            box-shadow: 0 0 0 0.2rem rgba(227, 204, 204, 0.25);
+            background-color: #E24b4b;
+            color: #ffffff;
+        } */
+
+        .display-5 {
+            color: #d72323;
+        }
+
+        .btn-custom {
+            /* background-color: #d72323; */
+            /* color: #ffffff; */
+            min-width: 200px;
+            border-color: #d72323;
+            border-radius: 20px;
+        }
+
+        .btn-custom:hover {
+            background-color: #d72323;
+            color: #ffffff;
+            /* min-width: 200px;
+            border-color: #d72323;
+            border-radius: 20px; */
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            max-height: 100vw;
+        }
+
+        .vertical-buttons {
+            flex-direction: column;
+        }
+
+        .top-margin {
+            margin-top: .5em;
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            /* background-color: #dc3741; */
+            /* color: #fff; */
+            font-size: .9em;
+        }
+
+        .icon-size {
+            font-size: .6em;
+        }
+
+        .text-muted-custom {
+            --bs-text-opacity: 1;
+            color: rgba(var(--bs-body-color-rgb), .55) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./icon-removebg-preview.png" alt="" width="50" class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./register_worker.html">สมัครสมาชิก</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4">
+        <div class="container-fluid table-responsive pt-3 p-0" style="min-height:200px">
+        </div>
+    </div>
+    <div class="modal fade" id="detail-modal" data-bs-backdrop="static" data-bs-focus="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="detail-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detail-modalLabel">รายละเอียดงาน</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" novalidate>
+                        <div class="row justify-content-start g-3">
+                            <div class="col-md-6">
+                                <label for="ชื่อ-สกุล">ชื่อ-สกุล</label>
+                                <input type="text" class="form-control" id="ชื่อ-สกุล" name="ชื่อ-สกุล" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="โทรศัพท์">เบอร์โทรศัพท์ที่ติดต่อได้</label>
+                                <input type="text" class="form-control" id="โทรศัพท์" name="โทรศัพท์" required>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                        <label for="อายุ">อายุ</label>
+                                        <input type="text" class="form-control" id="อายุ" name="อายุ" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="อาชีพ">อาชีพ</label>
+                                        <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="รายได้">รายได้</label>
+                                        <input type="text" class="form-control" id="รายได้" name="รายได้" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Code">โค้ดส่วนลด</label>
+                                        <input type="text" class="form-control" id="Code" name="Code" required>
+                                    </div> -->
+                            <div class="col-md-6">
+                                <label for="ชื่องาน">ชื่องาน <small id="length_count" class="text-muted"></small></label>
+                                <input type="text" class="form-control" id="ชื่องาน" name="ชื่องาน" placeholder="ใส่ชื่องานไม่เกิน 50 ตัวอักษร" maxlength="50" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="รายละเอียดงาน">รายละเอียดงาน</label>
+                                <textarea class="form-control" id="รายละเอียดงาน" name="รายละเอียดงาน" rows="5" placeholder="กรุณาใส่รายละเอียดงานให้ครบถ้วนตามที่ท่านต้องการ" required></textarea>
+                            </div>
+                            <div class="col-md-12 d-none">
+                                <div class="row justify-content-center" id="preview"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ราคาค่าจ้าง">ราคาที่ผู้ว่าจ้างเสนอ</label>
+                                <input type="number" min="20" max="3000" class="form-control" id="ราคาค่าจ้าง" name="ราคาค่าจ้าง" placeholder="ตั้งแต่ 20 - 3,000 บาท" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="วันนัดหมาย">วันที่นัดหมายให้ทำงาน</label>
+                                <input type="date" lang="th-TH" class="form-control" id="วันนัดหมาย" name="วันนัดหมาย" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="เวลานัดหมาย">เวลานัดหมายให้ทำงาน</label>
+                                <input type="time" lang="th-TH" class="form-control" id="เวลานัดหมาย" name="เวลานัดหมาย" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="Location">สถานที่ (Location)</label>
+                                <input type="text" class="form-control" id="Location" name="Location" required>
+                                <input type="text" class="form-control" id="Geolocation" name="Geolocation" hidden>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="รายละเอียดสถานที่">รายละเอียดสถานที่</label>
+                                <textarea class="form-control" id="รายละเอียดสถานที่" name="รายละเอียดสถานที่" rows="2" placeholder="บ้านเลขที่/ซอย/ตึก/ชั้น/จุดสังเกต"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="map" class="rounded"></div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="หมายเหตุ">หมายเหตุ</label>
+                                <input class="form-control" id="หมายเหตุ" name="หมายเหตุ">
+                            </div>
+                            <input type="text" id="รหัสผู้รับจ้าง" name="รหัสผู้รับจ้าง" hidden>
+                            <input type="text" id="ชื่อ-สกุลผู้รับจ้าง" name="ชื่อ-สกุลผู้รับจ้าง" hidden>
+                            <input type="text" id="เบอร์โทรผู้รับจ้าง" name="เบอร์โทรผู้รับจ้าง" hidden>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-evenly">
+                    <button type="button" class="btn btn-primary" id="modal-accept-btn">สนใจรับงาน</button>
+                    <button type="button" class="btn btn-warning" id="modal-bargain-btn">ขอต่อรองราคา</button>
+                    <button type="button" class="btn btn-link text-secondary" id="modal-decline-btn">ไม่รับงาน</button>
+                    <p class="text-secondary">คุณได้ทำรายการกับงานนี้ไปแล้ว กรุณารอการติดต่อกลับ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+    <script>
+        // VConsole will be exported to `window.VConsole` by default.
+        // var vConsole = new window.VConsole();
+    </script>
+    <script>
+        const scripturl = 'https://script.google.com/macros/s/AKfycbyxu01QkDD7FlhOSYyqVysSc9SihWQf9mJoqtjhKADqH9jJih0udQTYC9ExJFg0ahu8/exec'
+        const scripturl_request = 'https://script.google.com/macros/s/AKfycbz96KVstG87T2HHcFfLqYcYbycoxN5yv-9dZkwMjjK8cFdiP6F1rgkXAVn4qWgprXel/exec'
+        // const scripturl = 'https://script.google.com/macros/s/AKfycbzPYVNw2oJbPUgugx2qtpTbltQJp4IHHhroGIEX1Oidd4CO8JXf2HtxmPPZQ0bdHJs/exec'
+        // const scripturl_request = 'https://script.google.com/macros/s/AKfycbxRDxq3tp8-B0Q6TAeQyEFYuyr25ANlvrRvy2rXjuk-h61rKdttu2yyxp_Z5U2wjIU/exec'
+        var foldertoken
+        $(document).ready(function () {
+            // showData()
+            // navigator.geolocation
+            Swal.fire({
+                icon: 'info',
+                title: 'กรุณากรอกเบอร์โทรศัพท์ที่ท่านลงทะเบียนไว้',
+                text: 'หากยังไม่ลงทะเบียนไว้ กรุณากดปุ่มสมัครสมาชิก',
+                showDenyButton: true,
+                confirmButtonText: 'เข้าสู่ระบบ',
+                denyButtonText: 'สมัครสมาชิก',
+                allowOutsideClick: false,
+                input: 'text',
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    denyButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg',
+                    input: 'form-control form-control-lg text-center',
+                    icon: 'icon-size'
+                },
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                preConfirm: (num) => {
+                    return num
+                },
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    login(result.value)
+                } else if (result.isDenied) {
+                    location.href = "./register_worker.html"
+                }
+            })
+            // getLocation()
+            $('.form-control').each(function () {
+                let label = $(this).parent().find('label').text();
+                $(this).parent().append(` <div class="invalid-feedback">กรุณาใส่ ${label}</div>`)
+            })
+            // $('#แนบไฟล์').change(function () {
+            //     if ($(this)[0].files.length <= 0 || $(this)[0].files.length > 3) {
+            //         return Swal.fire({
+            //             icon: 'error',
+            //             title: 'กรุณาแนบไฟล์ไม่เกิน 3 ไฟล์',
+            //             confirmButtonText: 'ตกลง',
+            //             allowOutsideClick: false,
+            //         }).then((result) => {
+            //             if (result.isConfirmed) {
+            //                 $('#แนบไฟล์').val('')
+            //             }
+            //         })
+            //     } else {
+            //         let files = []
+            //         let fileinput = document.getElementById('แนบไฟล์').files
+            //         for (let i = 0; i < fileinput.length; i++) {
+            //             files.push(fileinput[i])
+            //         }
+            //         $('#preview').html('')
+            //         files.forEach(file => {
+            //             let reader = new FileReader();
+            //             reader.readAsDataURL(file);
+            //             reader.onloadend = function (e) {
+            //                 let img = document.createElement("img");
+            //                 img.src = e.target.result;
+            //                 $(img).addClass('img-fluid')
+            //                 let div = document.createElement("div");
+            //                 $(div).addClass('col-md-4')
+            //                 $(div).append(img)
+            //                 $('#preview').append(div)
+            //             }
+            //         })
+            //         $('#preview').parent().removeClass('d-none')
+            //     }
+            // })
+            // $('#ชื่องาน').on('keyup', function () {
+            //     let length = $(this).val().length
+            //     if (length == 0) return $('#length_count').text('')
+            //     $('#length_count').text(`${length}/50`)
+
+            // })
+        });
+        function login(num) {
+            $.LoadingOverlay("show");
+            $.ajax({
+                url: scripturl,
+                dataType: 'json',
+                method: 'post',
+                data: {
+                    opt: 'login',
+                    num: num
+                },
+                success: function (result) {
+                    $.LoadingOverlay("hide");
+                    if (result.status == 'success') {
+                        showData(result.data)
+                    } else if (result.status == 'not approved') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ขออภัย',
+                            html: 'ยังไม่ได้รับการอนุมัติให้รับงานได้<br>กรุณารอการอนุมัติก่อน'
+                        }).then(() => {
+                            location.reload()
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เกิดข้อผิดพลาด',
+                            text: result.status
+                        }).then(() => {
+                            location.reload()
+                        })
+                    }
+                }
+            })
+        }
+
+        var table
+        function showData(data) {
+
+            $('#detail-modal input[name="รหัสผู้รับจ้าง"]').val(data['รหัสผู้รับจ้าง'])
+            $('#detail-modal input[name="ชื่อ-สกุลผู้รับจ้าง"]').val(data['ชื่อ-สกุล'])
+            $('#detail-modal input[name="เบอร์โทรผู้รับจ้าง"]').val(data['โทรศัพท์'])
+            Swal.fire({
+                icon: 'info',
+                title: 'กำลังดึงข้อมูลงานปัจจุบัน',
+                allowOutsideClick: false,
+            })
+            Swal.showLoading(Swal.getConfirmButton())
+            $.ajax({
+                url: scripturl_request,
+                dataType: 'json',
+                method: 'post',
+                data: {
+                    opt: 'getdatatable',
+                },
+                success: function (result) {
+                    createTable(result)
+                }
+            })
+        }
+
+        function createTable(data) {
+            $('.table-responsive').html('').append(`<table id="table-data" class="table table-hover table-bordered" style="width: 100%">
+            <thead class="bg-danger text-center text-white text-nowrap"></thead>
+            <tbody class="bg-white"></tbody>
+        </table>`)
+            table = $('#table-data').DataTable({
+                data: data,
+                scrollX: true,
+                order: [[1, 'desc']],
+                // createdRow: function (row, data, dataIndex) {
+
+                //     if (data.signature_staff != '' && !data.signature_manager) {
+                //         console.log("🚀 ~ data", data)
+                //         $(row).addClass('bg-warning')
+                //     }
+                // },
+                columnDefs: [
+                    {
+                        targets: '_all',
+                        className: 'align-middle text-center'
+                    },
+                    {
+                        targets: [1],
+                        visible: false,
+                    }
+                ],
+                columns: [
+                    {
+                        data: 'No',
+                        title: 'ลำดับที่',
+                    },
+                    {
+                        data: 'Timestamp',
+                        title: 'วันที่',
+                    },
+                    {
+                        data: 'ชื่องาน',
+                        title: 'ชื่องาน',
+                        // render: function (data, type, row, meta) {
+                        //     return '<button class="btn btn-link" onclick="getDefiDetail(`' + JSON.stringify(row).replace(/\"/g, "'") + '`,' + meta.row + ')">Click!</button>'
+                        // }
+                    },
+                    {
+                        data: 'ราคาค่าจ้าง',
+                        title: 'ราคาที่ผู้ว่าจ้างเสนอ'
+                    },
+                    {
+                        data: 'Location',
+                        title: 'Location'
+                    },
+                    {
+                        data: 'Geolocation',
+                        title: 'แผนที่',
+                        render: function (data, type, row, meta) {
+                            return `<a href="https://www.google.com/maps?q=${data}" class="btn btn-sm btn-primary text-nowrap" target="_blank">ดูแผนที่</a>`
+                        }
+                    },
+                    {
+                        data: 'รายละเอียด',
+                        title: 'รายละเอียด',
+                        render: function (data, type, row, meta) {
+                            return '<button class="btn btn-link detail text-nowrap">รายละเอียด!</button>'
+
+                        }
+                    },
+                ]
+            });
+            Swal.close()
+
+            table.draw(false)
+            $('.detail').click(function () {
+                let row = table.row($(this).parents('tr')).index()
+                let data = table.row($(this).parents('tr')).data()
+                openDetail(data, row, this)
+            })
+        }
+        var isWorking = []
+        function openDetail(data, row, btn) {
+            $('#detail-modal').modal('show')
+            $('#detail-modal').on('shown.bs.modal', function () {
+                $(document).off('focusin.modal')
+                if (isWorking.includes(row)) {
+                    $('.modal-footer button').hide()
+                    $('.modal-footer p').show()
+                } else {
+                    $('.modal-footer button').show()
+                    $('.modal-footer p').hide()
+                }
+
+                $('#detail-modal .modal-title').text(`รายละเอียดงานที่ ${row + 1}`)
+                $('#preview').html('')
+                Object.keys(data).forEach(key => {
+                    if (key.indexOf('File') == 0) {
+                        if (data[key] == '') return
+                        let img = document.createElement("img");
+                        img.src = data[key];
+                        $(img).addClass('img-fluid')
+                        let div = document.createElement("div");
+                        $(div).addClass('col-md-4')
+                        $(div).append(img)
+                        $('#preview').append(div)
+                        $('#preview').parent().removeClass('d-none')
+                        return
+                    }
+                    if (key == 'Geolocation') {
+                        initmap(data[key])
+                    }
+                    $('#' + key).val(data[key]).prop('readonly', true)
+                })
+            })
+            $('#modal-accept-btn').click(function () {
+                accept(data, row, btn)
+            })
+            $('#modal-bargain-btn').click(function () {
+                bargain(data, row, btn)
+            })
+            $('#modal-decline-btn').click(function () {
+                decline(data, row, btn)
+            })
+        }
+
+        function accept(data, row, btn) {
+            data['action'] = 'สนใจงานนี้'
+            data["รหัสผู้รับจ้าง"] = $('#detail-modal input[name="รหัสผู้รับจ้าง"]').val()
+            data["ชื่อ-สกุลผู้รับจ้าง"] = $('#detail-modal input[name="ชื่อ-สกุลผู้รับจ้าง"]').val()
+            data["เบอร์โทรผู้รับจ้าง"] = $('#detail-modal input[name="เบอร์โทรผู้รับจ้าง"]').val()
+            console.log("🚀 ~ data", data)
+            Swal.fire({
+                icon: 'question',
+                title: 'คุณสนใจงานนี้ใช่หรือไม่',
+                html: 'ระบบจะทำการยืนยันงานนี้<br>และจะส่งข้อมูลการตอบรับไปยังผู้ว่าจ้าง',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg',
+                    input: 'form-control form-control-lg text-center',
+                    icon: 'icon-size'
+                },
+            }).then(result => {
+                if (result.isConfirmed) {
+                    $.LoadingOverlay("show");
+                    $.ajax({
+                        url: scripturl_request + '?opt=accept',
+                        dataType: 'json',
+                        method: 'post',
+                        data: data,
+                        success: function (result) {
+                            $.LoadingOverlay("hide");
+                            if (result.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สำเร็จ',
+                                    text: 'ยืนยันการทำงานเสร็จสิ้น'
+                                }).then(() => {
+                                    isWorking.push(row)
+                                    $(btn).parents('tr').addClass('text-muted-custom')
+                                    // table.row(row).data(data).draw(false)
+                                    $('.modal-footer button').hide()
+                                    $('.modal-footer p').show()
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'เกิดข้อผิดพลาด',
+                                    text: result.status
+                                }).then(() => {
+                                    // location.reload()
+                                })
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+        function bargain(data, row, btn) {
+            data['action'] = 'ต่อรองราคา'
+            $(document).off('focusin.modal')
+            data["รหัสผู้รับจ้าง"] = $('#detail-modal input[name="รหัสผู้รับจ้าง"]').val()
+            data["ชื่อ-สกุลผู้รับจ้าง"] = $('#detail-modal input[name="ชื่อ-สกุลผู้รับจ้าง"]').val()
+            data["เบอร์โทรผู้รับจ้าง"] = $('#detail-modal input[name="เบอร์โทรผู้รับจ้าง"]').val()
+            console.log("🚀 ~ data", data)
+            Swal.fire({
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                title: 'กรุณาระบุราคาที่ต้องการ',
+                text: 'ราคาค่าจ้าง ' + data['ราคาค่าจ้าง'] + ' บาท',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg',
+                    input: 'form-control form-control-lg text-center',
+                    icon: 'icon-size'
+                },
+                inputValidator: (price) => {
+                    if (price == '') {
+                        return 'กรุณาระบุราคาที่ต้องการ'
+                    }
+                    if (isNaN(price)) {
+                        return 'กรุณาระบุราคาที่ต้องการเป็นตัวเลข'
+                    }
+                },
+                preConfirm: (price) => {
+                    data["ราคา"] = price
+                }
+
+            }).then(result => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'question',
+                        title: 'คุณต้องการจะต่อรองราคาใช่หรือไม่',
+                        html: 'ระบบจะส่งข้อมูลราคาที่ท่านต้องการ<br>จาก ' + data['ราคาค่าจ้าง'] + ' เป็น ' + data['ราคา'] + ' บาท<br>ไปยังผู้ว่าจ้าง',
+                        showCancelButton: true,
+                        confirmButtonText: 'ยืนยัน',
+                        cancelButtonText: 'ยกเลิก',
+                        allowOutsideClick: false,
+                        buttonsStyling: false,
+                        customClass: {
+                            actions: 'vertical-buttons',
+                            cancelButton: 'btn btn-link text-muted mt-3',
+                            confirmButton: 'btn btn-primary btn-lg',
+                            input: 'form-control form-control-lg text-center',
+                            icon: 'icon-size'
+                        },
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            $.LoadingOverlay("show");
+                            $.ajax({
+                                url: scripturl_request + '?opt=bargain',
+                                dataType: 'json',
+                                method: 'post',
+                                data: data,
+                                success: function (result) {
+                                    $.LoadingOverlay("hide");
+                                    if (result.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'สำเร็จ',
+                                            text: 'ยืนยันการทำงานเสร็จสิ้น'
+                                        }).then(() => {
+                                            isWorking.push(row)
+                                            $(btn).parents('tr').addClass('text-muted-custom')
+                                            // table.row(row).data(data).draw(false)
+                                            $('.modal-footer button').hide()
+                                            $('.modal-footer p').show()
+                                        })
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'เกิดข้อผิดพลาด',
+                                            text: result.status
+                                        }).then(() => {
+                                            // location.reload()
+                                        })
+                                    }
+                                }
+                            })
+
+                        }
+                    })
+                }
+            })
+
+        }
+
+        function decline(data, row, btn) {
+            data['action'] = 'ไม่สนใจ'
+            data["รหัสผู้รับจ้าง"] = $('#detail-modal input[name="รหัสผู้รับจ้าง"]').val()
+            data["ชื่อ-สกุลผู้รับจ้าง"] = $('#detail-modal input[name="ชื่อ-สกุลผู้รับจ้าง"]').val()
+            data["เบอร์โทรผู้รับจ้าง"] = $('#detail-modal input[name="เบอร์โทรผู้รับจ้าง"]').val()
+            console.log("🚀 ~ data", data)
+            Swal.fire({
+                icon: 'question',
+                title: 'คุณ ไม่ สนใจงานนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ยืนยัน',
+                cancelButtonText: 'ยกเลิก',
+                allowOutsideClick: false,
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg',
+                    input: 'form-control form-control-lg text-center',
+                    icon: 'icon-size'
+                },
+            }).then(result => {
+                if (result.isConfirmed) {
+                    $.LoadingOverlay("show");
+                    $.ajax({
+                        url: scripturl_request + '?opt=decline',
+                        dataType: 'json',
+                        method: 'post',
+                        data: data,
+                        success: function (result) {
+                            $.LoadingOverlay("hide");
+                            if (result.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สำเร็จ',
+                                }).then(() => {
+                                    isWorking.push(row)
+                                    $(btn).parents('tr').addClass('text-muted-custom')
+                                    // table.row(row).data(data).draw(false)
+                                    $('.modal-footer button').hide()
+                                    $('.modal-footer p').show()
+                                })
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'เกิดข้อผิดพลาด',
+                                    text: result.status
+                                }).then(() => {
+                                    // location.reload()
+                                })
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+        async function formsubmit() {
+            event.preventDefault()
+            Swal.fire({
+                icon: 'question',
+                title: 'ยืนยันข้อมูล',
+                text: 'ท่านต้องการบันทึกข้อมูลนี้ใช่หรือไม่',
+                showCancelButton: true,
+                confirmButtonText: 'ตกลง',
+                cancelButtonText: 'ยกเลิก',
+                buttonsStyling: false,
+                customClass: {
+                    actions: 'vertical-buttons',
+                    cancelButton: 'btn btn-link text-muted mt-3',
+                    confirmButton: 'btn btn-primary btn-lg'
+                },
+                allowOutsideClick: false,
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    let form = $('form')[0]
+                    let formdata = $(form).serializeArray()
+                    let ele = {}
+                    for (let i = 0; i < formdata.length; i++) {
+                        ele[formdata[i].name] = formdata[i].value
+                    }
+                    let filesupload = await uploadFiles()
+                    filesupload.forEach(function (item, index) {
+                        ele[`File${index + 1}`] = item
+                    })
+                    if (ele['discount'] == 'ใช้โค้ดส่วนลด') {
+                        ele['ราคาลดแล้ว'] = parseInt(ele['ราคาค่าจ้าง']) - 100
+                        if (ele['ราคาลดแล้ว'] < 0) {
+                            ele['ราคาลดแล้ว'] = 0
+                        }
+                    } else {
+                        ele['ราคาลดแล้ว'] = ele['ราคาค่าจ้าง']
+                    }
+                    Swal.close()
+                    console.log(ele)
+                    $.LoadingOverlay("show");
+                    $.ajax({
+                        url: scripturl_request + '?opt=saverequest',
+                        type: 'POST',
+                        data: ele,
+                        success: function (data) {
+                            $.LoadingOverlay("hide");
+                            if (data.status == "success") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'บันทึกข้อมูลสำเร็จ',
+                                    confirmButtonText: 'ตกลง',
+                                }).then(() => {
+                                    window.location.href = "./index.html"
+                                })
+                            } else {
+                                alert("ไม่สำเร็จ")
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+    </script>
+    <script>
+        (() => {
+            'use strict'
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        form.classList.add('was-validated')
+                        $(form).find(":invalid").first().focus();
+                    } else {
+                        formsubmit()
+                    }
+                }, false)
+            })
+        })()
+    </script>
+    <script>
+        var map;
+        function initmap(geo) {
+
+            map = new longdo.Map({
+                placeholder: document.getElementById('map'),
+                language: 'th',
+                zoom: 18,
+            });
+            let lat = geo.split(',')[0]
+            console.log("🚀 ~ lat", lat)
+            let lng = geo.split(',')[1]
+            console.log("🚀 ~ lng", lng)
+            map.Layers.setBase(longdo.Layers.NORMAL);
+            map.Layers.add(longdo.Layers.POI);
+            map.location({ lon: lng, lat: lat }, true);
+            var marker = new longdo.Marker({ lon: lng, lat: lat });
+            map.Overlays.add(marker);
+
+        }
+        function rerverseGeocoding(lat, lon) {
+            $.ajax({
+                url: "https://api.longdo.com/map/services/address?",
+                dataType: "jsonp",
+                type: "GET",
+                crossDomain: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "*",
+                    "Access-Control-Allow-Methods": "*",
+                },
+                data: {
+                    key: "43c7e160bf5a19869fafa7afdbfec9c5",
+                    lon: lon,
+                    lat: lat,
+                },
+                success: function (results) {
+                    console.log("🚀 ~ results", results)
+                    $('#Location').val((results.road ? (results.road + ' ') : '') + results.subdistrict + " " + results.district + " " + results.province + " " + results.postcode + " " + results.country).prop('readonly', true)
+                    $('#Geolocation').val(lat + "," + lon)
+                    console.log("geo", $('#Geolocation').val());
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+    </script>
+    <script>
+        let firstfile = true
+        function showUploadEnd(e) {
+            Swal.fire({
+                icon: 'success',
+                title: 'อัพโหลดรูปภาพเรียบร้อย',
+                html: 'กรุณารอสักครู่<br><br><p class="text-danger">**ห้ามปิดหน้านี้จนกว่าจะบันทึกสำเร็จ<\p>',
+            })
+            return e.id
+        }
+        function dataURItoBlob(dataURI) {
+            var byteString = atob(dataURI.split(',')[1]);
+            var ab = new ArrayBuffer(byteString.length);
+            var ia = new Uint8Array(ab);
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            return new Blob([ab], { type: 'image/png' });
+        }
+        function getFolderToken() {
+            $.ajax({
+                url: scripturl,
+                type: 'POST',
+                data: {
+                    name: $('#ชื่อ-สกุล').val(),
+                    opt: 'getFolderToken'
+                },
+                success: function (data) {
+                    foldertoken = data
+                }
+            })
+        }
+        async function uploadFiles() {
+            var count
+            const handleProgress = function (value) {
+                if (value === 0) console.log("Uploading...");
+                else {
+                    console.log("Uploading... " + value * 100 + "%");
+                }
+                let percent = Math.round(value * 100)
+                Swal.update({
+                    title: "อัพโหลดไฟล์ที่ " + count,
+                    html: `<p class="text-danger">**ห้ามปิดหน้านี้จนกว่าจะบันทึกสำเร็จ<\p><div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar " style="width: ${percent}%;" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100">${percent}%</div>
+</div>`,
+                    allowOutsideClick: false,
+                    showConfirmButton: false
+                })
+                // Swal.showLoading(Swal.getConfirmButton())
+            }
+            Swal.fire({
+                icon: 'info',
+                title: 'กำลังอัพโหลดไฟล์',
+                html: 'uploading...<br><br><p class="text-danger">**ห้ามปิดหน้านี้จนกว่าจะบันทึกสำเร็จ<\p>',
+                allowOutsideClick: false
+            })
+            let files = []
+            let chunkSize = Math.round(0.75 * 1024 * 1024)
+            let fileinput = document.getElementById('แนบไฟล์').files
+            for (let i = 0; i < fileinput.length; i++) {
+                files.push(fileinput[i])
+            }
+            count = 1
+            let now = new Date()
+            let metadata = {
+                name: $('#ชื่อ-สกุล').val() + "_1 " + now.toLocaleString('th-TH', {
+                    hour12: false,
+                    month: "numeric",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric"
+                })
+            };
+            let file = files[0]
+            let res1 = await gdriveUpload({ ...foldertoken, file, metadata, chunkSize, onProgress: handleProgress })
+            files[0] = res1.id
+            if (files[1]) {
+                count = 2
+                metadata = {
+                    name: $('#ชื่อ-สกุล').val() + "_2 " + now.toLocaleString('th-TH', {
+                        hour12: false,
+                        month: "numeric",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric"
+                    })
+                };
+                let file = files[1]
+                let res2 = await gdriveUpload({ ...foldertoken, file, metadata, chunkSize, onProgress: handleProgress })
+                files[1] = res2.id
+            }
+            if (files[2]) {
+                count = 3
+                metadata = {
+                    name: $('#ชื่อ-สกุล').val() + "_3 " + now.toLocaleString('th-TH', {
+                        hour12: false,
+                        month: "numeric",
+                        day: "numeric",
+                        year: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric"
+                    })
+                };
+                let file = files[2]
+                let res3 = await gdriveUpload({ ...foldertoken, file, metadata, chunkSize, onProgress: handleProgress })
+                files[2] = res3.id
+            }
+            return files.map(id => {
+                return 'https://drive.google.com/uc?id=' + id
+            })
+        }
+    </script>
+    <script>
+        async function gdriveUpload(opt) {
+            if (!(opt.file && opt.token)) throw new TypeError("bad param");
+            if (!opt.file.size) return new Error("empty file");
+            let res
+            try {
+                const location = await getUploadLocation();
+                if (location instanceof Error) return location;
+                res = await uploadChunks(location);
+                if (res instanceof Error) return res;
+                return res;
+            } catch (error) {
+                if (error instanceof Error) return error;
+                throw error;
+            }
+            async function getUploadLocation() {
+                let metadata = { mimeType: opt.file.type, name: opt.file.name };
+                if (opt.folder) metadata.parents = [opt.folder];
+                if (opt.metadata) metadata = { ...metadata, ...opt.metadata };
+                try {
+                    const response = await fetch(
+                        "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable",
+                        {
+                            method: "POST", cache: "no-cache",
+                            headers: {
+                                Authorization: "Bearer " + opt.token,
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(metadata)
+                        });
+                    if (!response.ok) return new Error(`create: ${response.status} ${response.statusText}`);
+                    const location = response.headers.get("location");
+                    if (!location) return new Error("no location");
+                    return location;
+                } catch (error) {
+                    if (error instanceof Error) return error;
+                    throw error;
+                }
+            }
+            async function uploadChunks(location) {
+                const onProgress = opt.onProgress || ((_v) => { });
+                const chunkSize = opt.chunkSize || _DEFAULT.chunkSize;
+                if (chunkSize <= 0 || chunkSize % (256 * 1024))
+                    throw TypeError("bad chunkSize: " + chunkSize);
+                const size = opt.file.size;
+                try {
+                    for (let end = NaN, start = 0; ; start = end + 1) {
+                        onProgress(start / size); // signal progress
+                        end = Math.min(start + chunkSize, size);
+                        const blob = await opt.file.slice(start, end).arrayBuffer(); // read from file
+                        const response = await fetch(location, // upload the chunk to location
+                            {
+                                method: "PUT", cache: "no-cache", body: blob,
+                                headers: { "Content-Range": `bytes ${start}-${end - 1}/${size}` }
+                            });
+                        if (response.ok) { // all done
+                            onProgress(1); // signal 100% progress
+                            return response.json(); // success
+                        }
+                        if (response.status != 308) return new Error(`upload: ${response.status} ${response.statusText}`);
+                        const r = response.headers.get("Range");
+                        if (!r) return new Error("no Range");
+                        end = parseInt(r.substr(r.indexOf("-") + 1)); // get where the real upload end
+                        if (!Number.isInteger(end) || end <= start) return new Error("bad range: " + r);
+                    }
+                } catch (error) {
+                    if (error instanceof Error) return error;
+                    throw error;
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+</body>
+
+</html>
