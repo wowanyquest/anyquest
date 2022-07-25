@@ -488,11 +488,10 @@
                                     window.location.href = "./job_list.html"
                                 })
                             } else {
-                                data = JSON.stringify(data)
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'สมัครสมาชิกไม่สำเร็จ',
-                                    text: data == 'duplicate' ? 'มีเบอร์โทรนี้อยู่ในระบบแล้ว' : data,
+                                    text: data.status == 'duplicate' ? 'มีเบอร์โทรนี้อยู่ในระบบแล้ว' : data.status,
                                     confirmButtonText: 'ตกลง',
                                 })
                             }
