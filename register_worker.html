@@ -239,6 +239,7 @@
             $('#แนบไฟล์').change(function () {
                 let file = document.getElementById('แนบไฟล์').files[0]
                 let reader = new FileReader();
+                $('#preview').html('')
                 reader.readAsDataURL(file);
                 reader.onloadend = function (e) {
                     let img = document.createElement("img");
