@@ -282,10 +282,10 @@
                                         icon: 'warning',
                                         title: 'กรุณาแนบเฉพาะภาพใบหน้าผู้สมัคร',
                                         text: 'ใบหน้าจะต้องมีขนาดใหญ่เห็นชัดเจนเท่านั้น',
-                                        allowOutsidClick: false 
+                                        allowOutsidClick: false
                                     }).then((result) => {
-                                            $('#แนบไฟล์').val('')
-                                            $('#preview').html('')
+                                        $('#แนบไฟล์').val('')
+                                        $('#preview').html('')
                                     })
                                 }
                             }
@@ -488,6 +488,7 @@
                                     window.location.href = "./job_list.html"
                                 })
                             } else {
+                                data = JSON.stringify(data)
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'สมัครสมาชิกไม่สำเร็จ',
