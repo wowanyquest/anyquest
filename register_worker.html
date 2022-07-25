@@ -275,7 +275,6 @@
                     $('#preview').append(img)
                     setTimeout(function () {
                         $(img).faceDetection({
-                            minNeighbors: 0.5,
                             complete: function (faces) {
                                 $('#preview').LoadingOverlay('hide')
                                 if (faces.length == 0) {
