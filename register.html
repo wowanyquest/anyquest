@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
@@ -95,8 +99,11 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="./icon-removebg-preview.png" alt="" width="50" class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <img src="./icon-removebg-preview.png" alt="" width="50"
+                    class="d-inline-block align-text-top">&nbsp;AnyQuest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
@@ -118,10 +125,10 @@
                 </div>
             </div>
 
-<!--              <section class="rounded-3 m-2 border border-2 shadow bg-light text-start"> -->
-                <!-- <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;"> -->
+            <!--              <section class="rounded-3 m-2 border border-2 shadow bg-light text-start"> -->
+            <!-- <img src="https://www.img.in.th/images/b817c5e0df884723c6ca7763cda35f46.png" alt="..." style="max-height: 100px;"> -->
 
-<!--                 <p class="card-text mali text-primary text-center"><b>คำอธิบายการสมัครเป็นผู้ว่าจ้างงาน AnyQuest</b></p>
+            <!--                 <p class="card-text mali text-primary text-center"><b>คำอธิบายการสมัครเป็นผู้ว่าจ้างงาน AnyQuest</b></p>
                 <ol>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
                     <li>xxxxxxxxxxxxxxxxxxxxxxxxxxx</li>
@@ -156,7 +163,7 @@
                             <option value="" selected disabled></option>
                         </select>
                     </div>
-<!--                     <div class="col-md-6">
+                    <!--                     <div class="col-md-6">
                         <label for="อาชีพ">อาชีพ</label>
                         <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
                     </div>
@@ -174,7 +181,8 @@
             </section>
         </form>
     </div>
-    <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="pdpaConsent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -220,12 +228,12 @@
         // const scripturl = 'https://script.google.com/macros/s/AKfycbyx7C6vwTJNLLBkU5zpik5QnAGj_e7RuHzrTVo0uGBmEfwJf9utZCvnQVxCJ7mZw9vl/exec'
         $(document).ready(function () {
             showPDPA()
-             setDropdown()
+            setDropdown()
             $('.form-control').each(function () {
                 let label = $(this).parent().find('label').text();
                 $(this).parent().append(` <div class="invalid-feedback">กรุณาใส่ ${label}</div>`)
             })
-             $('#เพศ').change(function () {
+            $('#เพศ').change(function () {
                 if ($(this).val() == 'อื่นๆ') {
                     Swal.fire({
                         input: 'text',
@@ -257,7 +265,7 @@
             })
 
         });
-        
+
 
         function showPDPA() {
             $('#pdpaConsent').modal('show')
@@ -270,7 +278,7 @@
                 location.reload()
             })
         }
-        
+
         function setDropdown() {
             $.ajax({
                 url: scripturl_worker,
@@ -333,7 +341,12 @@
                                     window.location.href = "./index.html"
                                 })
                             } else {
-                                alert("สมัครสมาชิกไม่สำเร็จ")
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'สมัครสมาชิกไม่สำเร็จ',
+                                    text: data == 'duplicate' ? 'มีเบอร์โทรนี้อยู่ในระบบแล้ว' : data,
+                                    confirmButtonText: 'ตกลง',
+                                })
                             }
                         }
                     })
@@ -365,7 +378,8 @@
             })
         })()
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
