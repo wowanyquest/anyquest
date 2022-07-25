@@ -150,6 +150,12 @@
                         <label for="อายุ">อายุ</label>
                         <input type="text" class="form-control" id="อายุ" name="อายุ" required>
                     </div>
+                    <div class="col-md-6">
+                        <label for="เพศ">เพศ</label>
+                        <select class="form-select" id="เพศ" name="เพศ" required>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
 <!--                     <div class="col-md-6">
                         <label for="อาชีพ">อาชีพ</label>
                         <input type="text" class="form-control" id="อาชีพ" name="อาชีพ" required>
@@ -200,15 +206,48 @@
     </div>
     <script>
         const scripturl = 'https://script.google.com/macros/s/AKfycbwjm6auKkX0HzUYc54_Fzz7AgXotCftNBcCCS9cQU1V6kZQ-e-ep4nyT1E-vJ_ylD4l/exec'
+        const scripturl_worker = 'https://script.google.com/macros/s/AKfycbyxu01QkDD7FlhOSYyqVysSc9SihWQf9mJoqtjhKADqH9jJih0udQTYC9ExJFg0ahu8/exec'
         // const scripturl = 'https://script.google.com/macros/s/AKfycbyx7C6vwTJNLLBkU5zpik5QnAGj_e7RuHzrTVo0uGBmEfwJf9utZCvnQVxCJ7mZw9vl/exec'
         $(document).ready(function () {
             showPDPA()
+             setDropdown()
             $('.form-control').each(function () {
                 let label = $(this).parent().find('label').text();
                 $(this).parent().append(` <div class="invalid-feedback">กรุณาใส่ ${label}</div>`)
             })
+             $('#เพศ').change(function () {
+                if ($(this).val() == 'อื่นๆ') {
+                    Swal.fire({
+                        input: 'text',
+                        title: 'กรุณาระบุเพศ',
+                        inputPlaceholder: 'เพศ',
+                        showCancelButton: true,
+                        allowOutsideClick: false,
+                        buttonsStyling: false,
+                        customClass: {
+                            actions: 'vertical-buttons',
+                            cancelButton: 'btn btn-link text-muted mt-3',
+                            confirmButton: 'btn btn-primary btn-lg',
+                            input: 'form-control form-control-lg text-center'
+                        },
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'กรุณาใส่เพศ'
+                            }
+                        }
+                    }).then((result) => {
+                        if (result.isCanceled) {
+                            $('#เพศ').val('')
+                        }
+                        if (result.value) {
+                            $('#เพศ').append(`<option val="${result.value}">${result.value}</option>`).val(result.value)
+                        }
+                    })
+                }
+            })
 
         });
+        
 
         function showPDPA() {
             $('#pdpaConsent').modal('show')
@@ -219,6 +258,25 @@
             $('#cancel-btn').click(function () {
                 $('#pdpaConsent').modal('hide')
                 location.reload()
+            })
+        }
+        
+        function setDropdown() {
+            $.ajax({
+                url: scripturl_worker,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    opt: 'getdatalist'
+                },
+                success: function (data) {
+                    Object.keys(data).forEach(function (key) {
+                        data[key].forEach(function (item) {
+                            $('#' + key).append(`<option value="${item}">${item}</option>`)
+                        })
+                    })
+
+                }
             })
         }
 
