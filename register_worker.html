@@ -266,31 +266,31 @@
                 let file = document.getElementById('แนบไฟล์').files[0]
                 let reader = new FileReader();
                 $('#preview').html('')
-                $('#preview').LoadingOverlay('show')
+                // $('form').LoadingOverlay('show')
                 reader.readAsDataURL(file);
                 reader.onloadend = function (e) {
                     let img = document.createElement("img");
                     img.src = e.target.result;
                     $(img).attr('style', 'max-width:300px');
                     $('#preview').append(img)
-                    setTimeout(function () {
-                        $(img).faceDetection({
-                            complete: function (faces) {
-                                $('#preview').LoadingOverlay('hide')
-                                if (faces.length == 0) {
-                                    Swal.fire({
-                                        icon: 'warning',
-                                        title: 'กรุณาแนบเฉพาะภาพใบหน้าผู้สมัคร',
-                                        text: 'ใบหน้าจะต้องมีขนาดใหญ่เห็นชัดเจนเท่านั้น',
-                                        allowOutsidClick: false
-                                    }).then((result) => {
-                                        $('#แนบไฟล์').val('')
-                                        $('#preview').html('')
-                                    })
-                                }
-                            }
-                        })
-                    }, 100)
+                    // setTimeout(function () {
+                    //     $(img).faceDetection({
+                    //         complete: function (faces) {
+                    //             $('form').LoadingOverlay('hide')
+                    //             if (faces.length == 0) {
+                    //                 Swal.fire({
+                    //                     icon: 'warning',
+                    //                     title: 'กรุณาแนบเฉพาะภาพใบหน้าผู้สมัคร',
+                    //                     text: 'ใบหน้าจะต้องมีขนาดใหญ่เห็นชัดเจนเท่านั้น',
+                    //                     allowOutsidClick: false
+                    //                 }).then((result) => {
+                    //                     $('#แนบไฟล์').val('')
+                    //                     $('#preview').html('')
+                    //                 })
+                    //             }
+                    //         }
+                    //     })
+                    // }, 300)
 
                 }
 
@@ -380,7 +380,6 @@
                     opt: 'getFolderToken'
                 },
                 success: function (data) {
-                    console.log(data)
                     foldertoken = data
                 }
             })
